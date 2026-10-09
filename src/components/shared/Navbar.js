@@ -9,7 +9,7 @@ const NavBar = () => {
         timeZone: "Asia/Dhaka",
     });
     return (
-        <div>
+        <div className='bg-white'>
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
             <Link href="/">
             <div className="flex items-center gap-2">

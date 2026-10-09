@@ -13,6 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html
+      data-theme="light"
       lang="en"
       className={`${notoSerifBengali.className} h-full antialiased`}
     >
