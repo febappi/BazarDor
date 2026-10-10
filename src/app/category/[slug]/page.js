@@ -1,12 +1,19 @@
 import ProductCard from '@/components/shared/ProductCard';
+import SortSelect from '@/components/shared/SortSelect';
 import { apiFetch } from '@/lib/api';
 import React from 'react';
+import { notFound } from 'next/navigation';
 
-const CategoryPageSlug = async ({ params }) => {
+const CategoryPageSlug = async ({ params, searchParams }) => {
     const { slug } = await params;
+    const { sort } = await searchParams;
     const data = await apiFetch(`/categories/${slug}`);
+    if(!data){
+        notFound();
+    }
     const cat = await apiFetch('/products');
     const currentCategory = cat.filter(c => c.category === data.slug);
+    const sortedCategory = sort === 'asc' ? [...currentCategory].sort((a, b) => Number(a.today) - Number(b.today)) : sort === 'desc' ? [...currentCategory].sort((a, b) => Number(b.today) - Number(a.today)) : currentCategory;
     console.log(currentCategory)
     return (
         <div className='mt-6 mb-12'>
@@ -28,11 +35,7 @@ const CategoryPageSlug = async ({ params }) => {
             <div className='w-full max-w-6xl mx-auto bg-white m-4 p-4 rounded-3xl'>
                 <div className='flex justify-end items-center'>
                     <p className='px-4 font-light'>সাজান</p>
-                    <select defaultValue="ডিফল্ট" className="select w-38 cursor-pointer">
-                        <option>ডিফল্ট</option>
-                        <option>দাম: কম থেকে বেশি</option>
-                        <option>দাম: বেশি থেকে কম</option>
-                    </select>
+                    <SortSelect sort={sort} />
                 </div>
             </div>
             <div className='max-w-6xl w-full mx-auto'>
@@ -40,7 +43,7 @@ const CategoryPageSlug = async ({ params }) => {
                     মোট {currentCategory.length.toLocaleString('bn-BD')}টি পণ্য দেখানো হচ্ছে
                 </p>
                 <div className='grid grid-cols-3 max-w-6xl mx-auto m-5 gap-6'>
-                    {currentCategory.map((cc) => (
+                    {sortedCategory.map((cc) => (
                         <div key={cc.id}>
                             <ProductCard product={cc} />
                         </div>

@@ -1,4 +1,4 @@
-const BASE_URL = "https://api.api-store.workers.dev/api/bazardor";
+const BASE_URL = "https://openapi.programming-hero.com/api/bazardor";
 export const apiFetch = async (endpoint) => {
     try {
         const res = await fetch(`${BASE_URL}${endpoint}`);
