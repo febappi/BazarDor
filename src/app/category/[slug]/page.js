@@ -14,7 +14,6 @@ const CategoryPageSlug = async ({ params, searchParams }) => {
     const cat = await apiFetch('/products');
     const currentCategory = cat.filter(c => c.category === data.slug);
     const sortedCategory = sort === 'asc' ? [...currentCategory].sort((a, b) => Number(a.today) - Number(b.today)) : sort === 'desc' ? [...currentCategory].sort((a, b) => Number(b.today) - Number(a.today)) : currentCategory;
-    console.log(currentCategory)
     return (
         <div className='mt-6 mb-12'>
             <div className='w-full max-w-6xl mx-auto bg-white m-4 p-4 rounded-3xl'>
