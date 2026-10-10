@@ -10,7 +10,7 @@ const CategoryList = async () => {
     return (
         <div className='flex gap-10'>
             {data.map(n =>
-                <Link key={n.id} href={n.slug}>
+                <Link key={n.id} href={`/category/${n.slug}`}>
                     <span>{n.icon}</span>
                     <span className='ml-1 font-bold'>{n.nameBn}</span>
                 </Link>)}
