@@ -7,7 +7,7 @@ const HeroBanner = () => {
         timeZone: "Asia/Dhaka",
     });
     return (
-        <div className='max-w-7xl mx-auto m-8 flex flex-row justify-between bg-white rounded-3xl border-2 border-gray-200 shadow-md'>
+        <div className='max-w-6xl mx-auto m-8 flex flex-row justify-between bg-white rounded-3xl border-2 border-gray-200 shadow-md'>
             <div className='m-3'>
                 <p className='inline-block rounded-full bg-[#E2F1E7] px-3 py-1 text-s text-[#05893e] font-bold'>
                     {date}

@@ -10,7 +10,7 @@ const NavBar = () => {
     });
     return (
         <div className='bg-white'>
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
             <Link href="/">
             <div className="flex items-center gap-2">
                 <div className="bg-green-600 w-13 h-13 p-2 rounded-xl">
@@ -27,7 +27,7 @@ const NavBar = () => {
             </div>
         </div>
         <hr className='border-gray-300'></hr>
-        <div className='max-w-7xl mx-auto px-6 py-4'>
+        <div className='max-w-6xl mx-auto px-6 py-4'>
             <CategoryList/>
         </div>
         <hr className='border-gray-300'></hr>
