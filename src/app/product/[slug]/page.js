@@ -17,7 +17,7 @@ const ProductPageByID = async ({ params }) => {
         headers: await headers()
     });
     if(!session){
-        redirect(`/sign-in?redirect=/product/${slug}`);
+        redirect(`/signin?redirect=/product/${slug}`);
     }
     const data = await apiFetch(`/products/${slug}`);
     if(!data){
@@ -108,7 +108,7 @@ const ProductPageByID = async ({ params }) => {
                     <div className='border border-gray-300 rounded-2xl p-5'>
                         <p>গড় দাম</p>
                         <p className='text-4xl font-bold text-[#1A9951]'>{(avg).toLocaleString('bn-BD')} <span className='text-xl'>টাকা</span></p>
-                        <p>প্রতি কেজি-এর হিসাবে</p>
+                        <p>প্রতি {unitTranslations[data.unit]}-এর হিসাবে</p>
                     </div>
                 </div>
                 <div className="mt-6 w-full">

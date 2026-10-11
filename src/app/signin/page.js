@@ -61,7 +61,7 @@ const SignIn = () => {
                     <div className="divider font-light text-sm">অথবা</div>
                     <SocialLogin/>
                     <p className='text-center font-light mt-3'>
-                        অ্যাকাউন্ট নেই? <Link href="/sign-up" className='text-green-700 hover:underline'>সাইন আপ করুন</Link>
+                        অ্যাকাউন্ট নেই? <Link href="/signup" className='text-green-700 hover:underline'>সাইন আপ করুন</Link>
                     </p>
                 </fieldset>
                 </form>

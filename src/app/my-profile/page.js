@@ -1,7 +1,7 @@
 import SignOutButton from '@/components/shared/SignOutButton';
-import UpdateProfile from '@/components/shared/UpdateProfile';
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
+import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React from 'react';
 
@@ -10,7 +10,7 @@ const MyProfile = async () => {
         headers: await headers()
     });
     if (!session) {
-        redirect('/sign-in?redirect=/my-profile');
+        redirect('/signin?redirect=/my-profile');
     }
     const user = session.user;
     return (
@@ -33,7 +33,16 @@ const MyProfile = async () => {
                 </div>
                 <SignOutButton />
             </div>
-            <UpdateProfile/>
+            <div className='bg-white border border-gray-200 rounded-2xl p-6 mt-6'>
+                <p className='font-bold text-lg'>তথ্য</p>
+                <div className='sm:px-6 mt-6 mb-4'>
+                    <label className="label text-[#363f38] font-bold mb-2">নাম</label>
+                    <input type="text" defaultValue={user.name} readOnly className="input w-full rounded-lg" />
+                    <Link href='/my-profile/update' className='btn w-full mt-4 bg-green-700 hover:bg-green-800 text-white rounded-lg'>
+                        আপডেট
+                    </Link>
+                </div>
+            </div>
         </div>
     );
 };

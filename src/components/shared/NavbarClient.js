@@ -80,10 +80,10 @@ const NavbarClient = () => {
                         </details>
                     </div> :
                     <div className='flex flex-row gap-2'>
-                        <Link href="/sign-in">
+                        <Link href="/signin">
                             <button className="btn btn-sm sm:btn-md border-0 rounded-xl sm:w-25">সাইন ইন</button>
                         </Link>
-                        <Link href="/sign-up">
+                        <Link href="/signup">
                             <button className="btn btn-sm sm:btn-md bg-green-600 rounded-xl sm:w-25 text-white hover:bg-green-800">সাইন আপ</button>
                         </Link>
                     </div>

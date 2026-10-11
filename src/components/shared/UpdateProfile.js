@@ -10,7 +10,7 @@ const UpdateProfile = async () => {
         headers: await headers()
     });
     if(!session){
-        redirect('/sign-in?redirect=/my-profile/update');
+        redirect('/signin?redirect=/my-profile/update');
     }
     return (
         <div className='max-w-3xl w-full mx-auto mt-8 mb-12 px-4'>
