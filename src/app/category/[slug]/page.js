@@ -15,8 +15,8 @@ const CategoryPageSlug = async ({ params, searchParams }) => {
     const currentCategory = cat.filter(c => c.category === data.slug);
     const sortedCategory = sort === 'asc' ? [...currentCategory].sort((a, b) => Number(a.today) - Number(b.today)) : sort === 'desc' ? [...currentCategory].sort((a, b) => Number(b.today) - Number(a.today)) : currentCategory;
     return (
-        <div className='mt-6 mb-12'>
-            <div className='w-full max-w-6xl mx-auto bg-white m-4 p-4 rounded-3xl'>
+        <div className='mt-6 mb-12 px-4'>
+            <div className='w-full max-w-6xl mx-auto bg-white my-4 p-4 rounded-3xl'>
                 <div className="flex items-center gap-3 mt-2">
                     <div className='text-4xl'>
                         {data.icon}
@@ -31,7 +31,7 @@ const CategoryPageSlug = async ({ params, searchParams }) => {
                     </div>
                 </div>
             </div>
-            <div className='w-full max-w-6xl mx-auto bg-white m-4 p-4 rounded-3xl'>
+            <div className='w-full max-w-6xl mx-auto bg-white my-4 p-4 rounded-3xl'>
                 <div className='flex justify-end items-center'>
                     <p className='px-4 font-light'>সাজান</p>
                     <SortSelect sort={sort} />
@@ -41,7 +41,7 @@ const CategoryPageSlug = async ({ params, searchParams }) => {
                 <p className='font-light text-lg ml-2'>
                     মোট {currentCategory.length.toLocaleString('bn-BD')}টি পণ্য দেখানো হচ্ছে
                 </p>
-                <div className='grid grid-cols-3 max-w-6xl mx-auto m-5 gap-6'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto my-5 gap-6'>
                     {sortedCategory.map((cc) => (
                         <div key={cc.id}>
                             <ProductCard product={cc} />

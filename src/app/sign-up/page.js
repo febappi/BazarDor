@@ -44,13 +44,13 @@ const SignUp = () => {
         }
     }
     return (
-        <div className='max-w-6xl mx-auto mb-12'>
+        <div className='max-w-6xl mx-auto mb-12 px-4'>
             <div className='flex flex-col justify-center items-center mt-8 gap-2 mb-5'>
                 <p className='font-extrabold text-3xl'>অ্যাকাউন্ট তৈরি করুন</p>
                 <p className='text-lg font-light'>বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন।</p>
             </div>
             <div className='flex flex-col items-center'>
-                <form onSubmit={onSubmit} noValidate>
+                <form onSubmit={onSubmit} noValidate className='w-full max-w-md'>
                     <fieldset className="fieldset bg-white border-base-300 rounded-2xl w-full max-w-md border p-6 font-extrabold text-base">
                         <label className="label text-[#363f38]">নাম</label>
                         <input type="name" name="name" className="input w-full rounded-lg" placeholder="যেমন: রহিম উদ্দিন" />

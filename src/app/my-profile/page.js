@@ -19,7 +19,7 @@ const MyProfile = async () => {
                 <p className='font-extrabold text-3xl'>আমার প্রোফাইল</p>
                 <p className='font-light mt-1'>আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন।</p>
             </div>
-            <div className='bg-white border border-gray-200 rounded-2xl p-6 flex justify-between items-center'>
+            <div className='bg-white border border-gray-200 rounded-2xl p-6 flex flex-col sm:flex-row gap-4 justify-between items-center'>
                 <div className='flex items-center gap-4'>
                     <div className="avatar">
                         <div className="w-20 rounded-xl">

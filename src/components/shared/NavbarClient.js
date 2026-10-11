@@ -15,6 +15,10 @@ const NavbarClient = () => {
             toast.success("Sign In Successfull", { id: 'login-success' })
             router.replace(window.location.pathname)
         }
+        if(params.get('logout') === 'success'){
+            toast.success("SignOut Successfull", { id: 'logout-success' })
+            router.replace(window.location.pathname)
+        }
     }, [])
     const handleSignOut = async () =>{
         const { error } = await authClient.signOut()
@@ -22,8 +26,7 @@ const NavbarClient = () => {
             toast.error(error.message)
             return;
         }
-        toast.success("SignOut Successfull")
-        router.push("/")
+        window.location.href = "/?logout=success"
     }
     return (
         <div className='flex item-center gap-2'>
@@ -32,13 +35,13 @@ const NavbarClient = () => {
                     <div className="skeleton h-10 w-40"></div> :
                 user ?
                     <div>
-                        <div className="avatar h-10 w-10 mr-5">
+                        <div className="avatar h-10 w-10 mr-2 sm:mr-5">
                             <div className="ring-primary ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
                                 <img alt="Tailwind-CSS-Avatar-component" src="https://github.com/febappi/portfolio_generated/blob/main/assets/bappi-illustration.png?raw=true" />
                             </div>
                         </div>
                         <details className="dropdown dropdown-end">
-                            <summary className="btn border-0 text-xl list-none bg-white">
+                            <summary className="btn btn-sm sm:btn-md border-0 text-base sm:text-xl list-none bg-white">
                                 {user?.name}
                             </summary>
 
@@ -78,10 +81,10 @@ const NavbarClient = () => {
                     </div> :
                     <div className='flex flex-row gap-2'>
                         <Link href="/sign-in">
-                            <button className="btn border-0 rounded-xl w-25">সাইন ইন</button>
+                            <button className="btn btn-sm sm:btn-md border-0 rounded-xl sm:w-25">সাইন ইন</button>
                         </Link>
                         <Link href="/sign-up">
-                            <button className="btn bg-green-600 rounded-xl w-25 text-white hover:bg-green-800">সাইন আপ</button>
+                            <button className="btn btn-sm sm:btn-md bg-green-600 rounded-xl sm:w-25 text-white hover:bg-green-800">সাইন আপ</button>
                         </Link>
                     </div>
             }

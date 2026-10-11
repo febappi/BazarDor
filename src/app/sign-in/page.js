@@ -43,13 +43,13 @@ const SignIn = () => {
 
     }
     return (
-        <div className='max-w-6xl mx-auto mb-12'>
+        <div className='max-w-6xl mx-auto mb-12 px-4'>
             <div className='flex flex-col justify-center items-center mt-8 gap-2 mb-5'>
                 <p className='font-extrabold text-3xl'>সাইন ইন</p>
-                <p className='text-lg font-light'>বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্টে ঢুকুন।</p>
+                <p className='text-base sm:text-lg font-light text-center'>বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্টে ঢুকুন।</p>
             </div>
             <div className='flex flex-col items-center'>
-                <form onSubmit={onSubmit} noValidate>
+                <form onSubmit={onSubmit} noValidate className='w-full max-w-md'>
                 <fieldset className="fieldset bg-white border-base-300 rounded-2xl w-full max-w-md border p-6 font-extrabold text-base">
                     <label className="label text-[#363f38] mt-2">ইমেইল</label>
                     <input type="email" name="email" className="input w-full rounded-lg" placeholder="you@example.com" />

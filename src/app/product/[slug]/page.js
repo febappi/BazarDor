@@ -28,9 +28,9 @@ const ProductPageByID = async ({ params }) => {
     const allPrices = data.markets.flatMap(m => [m.min, m.max]);
     const avg = Math.round(allPrices.reduce((a, b) => a + b, 0) / allPrices.length);
     return (
-        <div className='max-w-6xl w-full mx-auto flex flex-col justify-center items-center gap-0 mt-6'>
+        <div className='max-w-6xl w-full mx-auto flex flex-col justify-center items-center gap-0 mt-6 px-4'>
             <div className='w-full'>
-                <div className='flex flex-row'>
+                <div className='flex flex-row flex-wrap'>
                     <Link href='/'>
                         <p>হোম</p>
                     </Link>
@@ -46,13 +46,13 @@ const ProductPageByID = async ({ params }) => {
                     <p>{data.nameBn}</p>
                 </div>
             </div>
-            <div className='w-full max-w-6xl mx-auto bg-white m-4 p-4 rounded-3xl flex justify-between items-center'>
+            <div className='w-full max-w-6xl mx-auto bg-white my-4 p-4 rounded-3xl flex flex-col sm:flex-row gap-4 justify-between items-center'>
                 <div className="flex items-center gap-3 mt-2">
                     <div className="bg-[#F0F5F0] w-18 h-18 p-2 rounded-xl flex items-center justify-center text-3xl">
                         {data.image}
                     </div>
                     <div className='items-center'>
-                        <p className='text-3xl font-bold'>
+                        <p className='text-2xl sm:text-3xl font-bold'>
                             {data.nameBn}
                         </p>
                         <p className='font-light text-lg'>
@@ -63,7 +63,7 @@ const ProductPageByID = async ({ params }) => {
                         </p>
                     </div>
                 </div>
-                <div className="bg-[#F0F5F0] w-25 h-30 p-2 rounded-xl flex flex-col items-center justify-center text-sm">
+                <div className="bg-[#F0F5F0] w-full sm:w-25 sm:h-30 p-3 sm:p-2 rounded-xl flex flex-col items-center justify-center text-sm">
                     <p>
                         আজকের দাম
                     </p>
@@ -88,13 +88,13 @@ const ProductPageByID = async ({ params }) => {
                     </p>
                 </div>
             </div>
-            <div className='w-full max-w-6xl mx-auto bg-white m-4 p-4 rounded-3xl flex flex-col'>
+            <div className='w-full max-w-6xl mx-auto bg-white my-4 p-4 rounded-3xl flex flex-col'>
                 <div>
                     <p className='font-bold text-xl my-2'>
                         দামের সারসংক্ষেপ
                     </p>
                 </div>
-                <div className='grid grid-cols-3 gap-4'>
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                     <div className='border border-gray-300 rounded-2xl p-5'>
                         <p>সর্বনিম্ন দাম</p>
                         <p className='text-4xl font-bold text-[#1A9951]'>{(lowest).toLocaleString('bn-BD')} <span className='text-xl'>টাকা</span></p>
@@ -116,14 +116,14 @@ const ProductPageByID = async ({ params }) => {
                         বাজারভিত্তিক আজকের দাম
                     </p>
 
-                    <div className="overflow-hidden rounded-2xl border border-[#E1E9E1] bg-[#F0F5F0]">
-                        <table className="w-full border-collapse text-left text-sm">
+                    <div className="overflow-x-auto rounded-2xl border border-[#E1E9E1] bg-[#F0F5F0]">
+                        <table className="w-full border-collapse text-left text-xs sm:text-sm">
                             <thead>
                                 <tr className="border-b border-[#DCE5DC] text-[#2c2e2c] bg-white">
                                     <th className="px-3 py-3 font-extrabold">
                                         বাজার
                                     </th>
-                                    <th className="px-3 py-3 font-extrabold">
+                                    <th className="hidden sm:table-cell px-3 py-3 font-extrabold">
                                         বিভাগ
                                     </th>
                                     <th className="px-3 py-3 text-right font-extrabold">
@@ -154,7 +154,7 @@ const ProductPageByID = async ({ params }) => {
                                                 {market.market}
                                             </td>
 
-                                            <td className="px-3 py-3 text-[#29352D]">
+                                            <td className="hidden sm:table-cell px-3 py-3 text-[#29352D]">
                                                 {market.division}
                                             </td>
 

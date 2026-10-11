@@ -9,12 +9,12 @@ const TopFallers = async () => {
     }
     const topSixFaller = [...data].filter(data => data.change.pct < 0).sort((a, b) => a.change.pct - b.change.pct).slice(0, 6);
     return (
-        <div className='max-w-6xl mx-auto mt-8'>
+        <div className='max-w-6xl mx-auto mt-8 px-4'>
             <p className='font-extrabold text-xl'>
                 <span className='text-green-500 text-sm'>▼ </span>
                 আজ দাম কমেছে
             </p>
-            <div className='grid grid-cols-3 max-w-6xl mx-auto m-5 gap-6'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto my-5 gap-6'>
                 {topSixFaller.map((tsf) => (
                     <div key={tsf.id}>
                         <ProductCard product={tsf}/>

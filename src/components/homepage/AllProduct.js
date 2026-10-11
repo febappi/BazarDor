@@ -8,14 +8,14 @@ const AllProduct = async () => {
         return <p>Failed to load data from API.</p>;
     }
     return (
-        <div id="product-section" className='max-w-6xl mx-auto mt-8'>
+        <div id="product-section" className='max-w-6xl mx-auto mt-8 px-4'>
             <p className='font-extrabold text-xl mb-3'>
                 সব পণ্য
             </p>
             <p className='font-light text-lg'>
                 মোট {data.length.toLocaleString('bn-BD')}টি পণ্য দেখানো হচ্ছে
             </p>
-            <div className='grid grid-cols-3 max-w-6xl mx-auto m-5 gap-6'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto my-5 gap-6'>
                     {data.map((data) => (
                         <div key={data.id}>
                             <ProductCard product={data} />

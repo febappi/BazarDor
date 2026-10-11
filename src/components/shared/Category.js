@@ -8,7 +8,7 @@ const CategoryList = async () => {
         return <p>Failed to load data from API.</p>;
     }
     return (
-        <div className='flex gap-4'>
+        <div className='flex gap-4 overflow-x-auto whitespace-nowrap'>
             {data.map(n =>
                 <CategoryLink key={n.id} href={`/category/${n.slug}`}>
                     <span>{n.icon}</span>
