@@ -1,4 +1,5 @@
 'use client'
+import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import React from 'react';
 
@@ -7,8 +8,17 @@ const SignIn = () => {
         e.preventDefault()
         const formData = new FormData(e.target)
         const user = Object.fromEntries(formData.entries())
+        const { data, error } = await authClient.SignIn.email({
+                ...user,
+                callbackURL: "/"
+        });
+        if(data){
+            console.log(data)
+        }
+        if(error){
+            console.log(error)
+        }
 
-        console.log(user)
     }
     return (
         <div className='max-w-6xl mx-auto mb-12'>
