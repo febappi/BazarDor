@@ -1,14 +1,29 @@
 'use client'
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
-import React from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 const NavbarClient = () => {
+    const router = useRouter()
     const { data: session } = authClient.useSession()
     const user = session?.user
-    console.log(user)
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search)
+        if(params.get('login') === 'success'){
+            toast.success("Sign In Successfull", { id: 'login-success' })
+            router.replace(window.location.pathname)
+        }
+    }, [])
     const handleSignOut = async () =>{
-        await authClient.signOut()
+        const { error } = await authClient.signOut()
+        if(error){
+            toast.error(error.message)
+            return;
+        }
+        toast.success("SignOut Successfull")
+        router.push("/")
     }
     return (
         <div className='flex item-center gap-2'>

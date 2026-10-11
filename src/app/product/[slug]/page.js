@@ -1,5 +1,8 @@
 import { apiFetch } from '@/lib/api';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 import Link from 'next/link';
+import { notFound, redirect } from 'next/navigation';
 import React from 'react';
 
 const ProductPageByID = async ({ params }) => {
@@ -10,7 +13,16 @@ const ProductPageByID = async ({ params }) => {
         'dozen': 'ডজন'
     };
     const { slug } = await params;
+    const session = await auth.api.getSession({
+        headers: await headers()
+    });
+    if(!session){
+        redirect(`/sign-in?redirect=/product/${slug}`);
+    }
     const data = await apiFetch(`/products/${slug}`);
+    if(!data){
+        notFound();
+    }
     const lowest = Math.min(...data.markets.map(m => m.min));
     const highest = Math.max(...data.markets.map(m => m.max));
     const allPrices = data.markets.flatMap(m => [m.min, m.max]);

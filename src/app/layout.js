@@ -2,6 +2,7 @@ import { Hind_Siliguri } from 'next/font/google';
 import "./globals.css";
 import NavBar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
+import { Toaster } from 'react-hot-toast';
 const hindSiliguriLight = Hind_Siliguri({
   weight: '300',
   subsets: ['bengali', 'latin'],
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
         <NavBar/>
         {children}
         <Footer/>
+        <Toaster />
       </body>
     </html>
   );
