@@ -10,15 +10,15 @@ export const auth = betterAuth({
     enabled: true,
     autoSignIn: false,
   },
+  trustedOrigins: [
+    "http://localhost:3000",
+    "https://bazardor-febappi.netlify.app/",
+  ],
   socialProviders: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     },
-    trustedOrigins: [
-      "http://localhost:3000",
-      "https://bazardor-febappi.netlify.app/",
-    ],
     github: {
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
