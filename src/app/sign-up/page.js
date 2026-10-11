@@ -1,12 +1,13 @@
 'use client'
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { authClient } from '@/lib/auth-client';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import SocialLogin from '@/components/shared/SocialLogin';
 const SignUp = () => {
     const router = useRouter()
+    const [loading, setLoading] = useState(false)
     const onSubmit = async (e) => {
         e.preventDefault()
         const formData = new FormData(e.target)
@@ -27,11 +28,13 @@ const SignUp = () => {
             toast.error("Passwords do not match!");
             return;
         }
+        setLoading(true)
         const { data, error } = await authClient.signUp.email({
             name: user.name,
             email: user.email,
             password: user.password
         });
+        setLoading(false)
         if(data){
             toast.success("SignUp Successfull")
             router.push("/")
@@ -57,7 +60,9 @@ const SignUp = () => {
                         <input type="password" name="password" className="input w-full rounded-lg" placeholder="কমপক্ষে ৮ অক্ষর" />
                         <label className="label text-[#363f38] mt-2">পাসওয়ার্ড নিশ্চিত করুন</label>
                         <input type="password" name="confirmPassword" className="input w-full rounded-lg" placeholder="আবার লিখুন" />
-                        <button className="btn w-full mt-4 bg-green-700 hover:bg-green-800 text-white rounded-xl" type="submit">অ্যাকাউন্ট তৈরি করুন</button>
+                        <button className="btn w-full mt-4 bg-green-700 hover:bg-green-800 text-white rounded-xl" type="submit" disabled={loading}>
+                            {loading ? <span className="loading loading-spinner"></span> : 'অ্যাকাউন্ট তৈরি করুন'}
+                        </button>
                         <div className="divider font-light text-sm">অথবা</div>
                         <SocialLogin/>
                         <p className='text-center font-light mt-3'>

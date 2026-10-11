@@ -7,7 +7,7 @@ export default function NotFound() {
                 404
             </h1>
             <h2 className="mt-4 text-2xl font-bold">
-                পণ্য বা ক্যাটাগরি পাওয়া যায়নি
+                কোন সমস্যা হয়েছে
             </h2>
             <p className="mt-2 text-gray-500">
                 আপনি যে পেজটি খুঁজছেন, সেটি পাওয়া যায়নি।

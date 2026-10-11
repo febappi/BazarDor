@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 
 const NavbarClient = () => {
     const router = useRouter()
-    const { data: session } = authClient.useSession()
+    const { data: session, isPending } = authClient.useSession()
     const user = session?.user
     useEffect(() => {
         const params = new URLSearchParams(window.location.search)
@@ -28,6 +28,8 @@ const NavbarClient = () => {
     return (
         <div className='flex item-center gap-2'>
             {
+                isPending ?
+                    <div className="skeleton h-10 w-40"></div> :
                 user ?
                     <div>
                         <div className="avatar h-10 w-10 mr-5">
@@ -36,7 +38,7 @@ const NavbarClient = () => {
                             </div>
                         </div>
                         <details className="dropdown dropdown-end">
-                            <summary className="btn border-0 text-xl list-none">
+                            <summary className="btn border-0 text-xl list-none bg-white">
                                 {user?.name}
                             </summary>
 
@@ -55,7 +57,8 @@ const NavbarClient = () => {
 
                                 <div className="mt-7 flex flex-col gap-3">
                                     <Link
-                                        href="/"
+                                        href="/my-profile"
+                                        onClick={(e) => e.currentTarget.closest('details').open = false}
                                         className="flex items-center gap-3 rounded-xl px-2 py-2 text-xl text-[#202a23]"
                                     >
                                         <span className="text-xl">👤</span>

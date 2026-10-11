@@ -3,6 +3,7 @@ import NavbarClient from './NavbarClient';
 import Link from 'next/link';
 import CategoryList from './Category';
 import MarqueeList from './MarqueeList';
+import { Suspense } from 'react';
 const NavBar = () => {
     const date = new Date().toLocaleDateString("bn-BD", {
         dateStyle: "full",
@@ -28,11 +29,15 @@ const NavBar = () => {
         </div>
         <hr className='border-gray-300'></hr>
         <div className='max-w-6xl mx-auto px-6 py-4'>
-            <CategoryList/>
+            <Suspense fallback={<div className="skeleton h-6 w-full"></div>}>
+                <CategoryList/>
+            </Suspense>
         </div>
         <hr className='border-gray-300'></hr>
         <div className='w-full mx-auto'>
-            <MarqueeList/>
+            <Suspense fallback={<div className="skeleton h-10 w-full rounded-none"></div>}>
+                <MarqueeList/>
+            </Suspense>
         </div>
         <hr className='border-gray-300'></hr>
         </div>

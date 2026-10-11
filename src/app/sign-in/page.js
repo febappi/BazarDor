@@ -3,11 +3,17 @@ import SocialLogin from '@/components/shared/SocialLogin';
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 const SignIn = () => {
     const router = useRouter()
+    const [loading, setLoading] = useState(false)
+    useEffect(() => {
+        if(new URLSearchParams(window.location.search).get('redirect')){
+            toast.error("Please sign in first", { id: 'login-required' })
+        }
+    }, [])
     const onSubmit = async (e) =>{
         e.preventDefault()
         const formData = new FormData(e.target)
@@ -21,10 +27,12 @@ const SignIn = () => {
             return;
         }
         const redirectTo = new URLSearchParams(window.location.search).get('redirect')
+        setLoading(true)
         const { data, error } = await authClient.signIn.email({
                 email: user.email,
                 password: user.password
         });
+        setLoading(false)
         if(data){
             toast.success("Sign In Successfull")
             router.push(redirectTo && redirectTo.startsWith('/') && !redirectTo.startsWith('//') ? redirectTo : "/")
@@ -47,7 +55,9 @@ const SignIn = () => {
                     <input type="email" name="email" className="input w-full rounded-lg" placeholder="you@example.com" />
                     <label className="label text-[#363f38] mt-2">পাসওয়ার্ড</label>
                     <input type="password" name="password" className="input w-full rounded-lg" placeholder="কমপক্ষে ৮ অক্ষর" />
-                    <button type="submit" className="btn w-full mt-4 bg-green-700 hover:bg-green-800 text-white rounded-xl">সাইন ইন</button>
+                    <button type="submit" disabled={loading} className="btn w-full mt-4 bg-green-700 hover:bg-green-800 text-white rounded-xl">
+                        {loading ? <span className="loading loading-spinner"></span> : 'সাইন ইন'}
+                    </button>
                     <div className="divider font-light text-sm">অথবা</div>
                     <SocialLogin/>
                     <p className='text-center font-light mt-3'>

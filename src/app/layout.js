@@ -8,6 +8,7 @@ const hindSiliguriLight = Hind_Siliguri({
   subsets: ['bengali', 'latin'],
   variable: '--font-hind-siliguri', // Optional: for Tailwind CSS CSS variables
 });
+export const dynamic = "force-dynamic";
 export const metadata = {
   title: "BazarDor",
   description: "BazarDor for daily price update",
