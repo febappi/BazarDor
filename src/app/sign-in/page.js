@@ -1,7 +1,15 @@
+'use client'
 import Link from 'next/link';
 import React from 'react';
 
 const SignIn = () => {
+    const onSubmit = async (e) =>{
+        e.preventDefault()
+        const formData = new FormData(e.target)
+        const user = Object.fromEntries(formData.entries())
+
+        console.log(user)
+    }
     return (
         <div className='max-w-6xl mx-auto mb-12'>
             <div className='flex flex-col justify-center items-center mt-8 gap-2 mb-5'>
@@ -9,12 +17,13 @@ const SignIn = () => {
                 <p className='text-lg font-light'>বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্টে ঢুকুন।</p>
             </div>
             <div className='flex flex-col items-center'>
+                <form onSubmit={onSubmit}>
                 <fieldset className="fieldset bg-white border-base-300 rounded-2xl w-full max-w-md border p-6 font-extrabold text-base">
                     <label className="label text-[#363f38] mt-2">ইমেইল</label>
-                    <input type="email" className="input w-full rounded-lg" placeholder="you@example.com" />
+                    <input type="email" name="email" className="input w-full rounded-lg" placeholder="you@example.com" />
                     <label className="label text-[#363f38] mt-2">পাসওয়ার্ড</label>
-                    <input type="password" className="input w-full rounded-lg" placeholder="কমপক্ষে ৮ অক্ষর" />
-                    <button className="btn w-full mt-4 bg-green-700 hover:bg-green-800 text-white rounded-xl">সাইন ইন</button>
+                    <input type="password" name="password" className="input w-full rounded-lg" placeholder="কমপক্ষে ৮ অক্ষর" />
+                    <button type="submit" className="btn w-full mt-4 bg-green-700 hover:bg-green-800 text-white rounded-xl">সাইন ইন</button>
                     <div className="divider font-light text-sm">অথবা</div>
                     <div className='flex gap-3'>
                         <button className="btn flex-1 px-2 whitespace-nowrap bg-white text-black border-[#e5e5e5] rounded-lg">
@@ -30,6 +39,7 @@ const SignIn = () => {
                         অ্যাকাউন্ট নেই? <Link href="/sign-up" className='text-green-700 hover:underline'>সাইন আপ করুন</Link>
                     </p>
                 </fieldset>
+                </form>
                 <Link href="/" className='mt-6 text-gray-500 font-light hover:text-green-700'>
                     ← হোম পেজে ফিরে যান
                 </Link>
