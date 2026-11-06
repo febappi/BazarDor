@@ -62,3 +62,16 @@ GITHUB_CLIENT_SECRET=
 ```
 
 Then open [http://localhost:3000](http://localhost:3000) in your browser.
+<br>
+
+<div align="center">
+
+---
+
+**Built by [Fozle Elahe Bappi](https://febappi.netlify.app)** · [@febappi](https://github.com/febappi)
+
+<a href="https://febappi.netlify.app">
+  <img src="https://img.shields.io/badge/View_my_portfolio-→-2563EB?style=for-the-badge" alt="View my portfolio" />
+</a>
+
+</div>
